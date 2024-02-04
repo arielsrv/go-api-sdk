@@ -8,9 +8,9 @@ import (
 	"testing"
 	"time"
 
+	"github.com/arielsrv/go-sdk-api/core/mocks"
+	"github.com/arielsrv/go-sdk-api/core/services"
 	"github.com/stretchr/testify/require"
-	"gitlab.com/iskaypetcom/digital/sre/tools/dev/backend-api-sdk/v2/core/mocks"
-	"gitlab.com/iskaypetcom/digital/sre/tools/dev/backend-api-sdk/v2/core/services"
 )
 
 func TestDummyHostedService_Execute(t *testing.T) {

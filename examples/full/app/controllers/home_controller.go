@@ -1,7 +1,7 @@
 package controllers
 
 import (
-	"gitlab.com/iskaypetcom/digital/sre/tools/dev/backend-api-sdk/v2/core/routing"
+	"github.com/arielsrv/go-sdk-api/core/routing"
 )
 
 type IHomeController interface {

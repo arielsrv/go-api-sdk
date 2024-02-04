@@ -3,7 +3,7 @@ package subscriptions
 import (
 	"context"
 
-	"gitlab.com/iskaypetcom/digital/sre/tools/dev/backend-api-sdk/v2/core/application"
+	"github.com/arielsrv/go-sdk-api/core/application"
 )
 
 type ApplicationWarmupListener struct {

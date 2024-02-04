@@ -6,12 +6,12 @@ import (
 	"sync"
 	"time"
 
+	"github.com/arielsrv/go-sdk-api/core/errorx"
 	"github.com/gofiber/adaptor/v2"
 	"github.com/gofiber/fiber/v2"
 	"github.com/prometheus/client_golang/prometheus"
 	"github.com/prometheus/client_golang/prometheus/promauto"
 	"github.com/prometheus/client_golang/prometheus/promhttp"
-	"gitlab.com/iskaypetcom/digital/sre/tools/dev/backend-api-sdk/v2/core/errorx"
 )
 
 // FiberPrometheus ...

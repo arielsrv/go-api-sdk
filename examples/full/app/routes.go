@@ -1,10 +1,10 @@
 package app
 
 import (
-	"gitlab.com/iskaypetcom/digital/sre/tools/dev/backend-api-sdk/v2/examples/full/app/controllers"
+	"github.com/arielsrv/go-sdk-api/examples/full/app/controllers"
 	"net/http"
 
-	"gitlab.com/iskaypetcom/digital/sre/tools/dev/backend-api-sdk/v2/core/routing"
+	"github.com/arielsrv/go-sdk-api/core/routing"
 )
 
 // Routes is the routes for the application

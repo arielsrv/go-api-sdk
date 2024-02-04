@@ -3,8 +3,8 @@ package container_test
 import (
 	"testing"
 
+	"github.com/arielsrv/go-sdk-api/core/container"
 	"github.com/stretchr/testify/require"
-	"gitlab.com/iskaypetcom/digital/sre/tools/dev/backend-api-sdk/v2/core/container"
 	"go.uber.org/dig"
 )
 

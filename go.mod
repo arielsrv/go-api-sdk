@@ -1,4 +1,4 @@
-module gitlab.com/iskaypetcom/digital/sre/tools/dev/backend-api-sdk/v2
+module github.com/arielsrv/go-sdk-api
 
 go 1.21
 

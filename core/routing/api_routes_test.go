@@ -4,9 +4,9 @@ import (
 	"net/http"
 	"testing"
 
+	"github.com/arielsrv/go-sdk-api/core/container"
+	"github.com/arielsrv/go-sdk-api/core/routing"
 	"github.com/stretchr/testify/assert"
-	"gitlab.com/iskaypetcom/digital/sre/tools/dev/backend-api-sdk/v2/core/container"
-	"gitlab.com/iskaypetcom/digital/sre/tools/dev/backend-api-sdk/v2/core/routing"
 	"go.uber.org/dig"
 )
 

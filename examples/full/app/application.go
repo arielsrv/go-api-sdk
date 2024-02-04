@@ -1,8 +1,8 @@
 package app
 
 import (
-	"gitlab.com/iskaypetcom/digital/sre/tools/dev/backend-api-sdk/v2/core/application"
-	"gitlab.com/iskaypetcom/digital/sre/tools/dev/backend-api-sdk/v2/examples/full/app/workers"
+	"github.com/arielsrv/go-sdk-api/core/application"
+	"github.com/arielsrv/go-sdk-api/examples/full/app/workers"
 	"gitlab.com/iskaypetcom/digital/sre/tools/dev/go-sdk-config/env"
 	"log/slog"
 	"os"

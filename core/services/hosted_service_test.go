@@ -9,8 +9,8 @@ import (
 	"testing"
 	"time"
 
+	"github.com/arielsrv/go-sdk-api/core/services"
 	"github.com/stretchr/testify/mock"
-	"gitlab.com/iskaypetcom/digital/sre/tools/dev/backend-api-sdk/v2/core/services"
 )
 
 type MockHostedService struct {

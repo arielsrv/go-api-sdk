@@ -3,7 +3,7 @@ package main
 import (
 	"log"
 
-	"gitlab.com/iskaypetcom/digital/sre/tools/dev/backend-api-sdk/v2/core"
+	"github.com/arielsrv/go-sdk-api/core"
 )
 
 func main() {

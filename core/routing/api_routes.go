@@ -1,6 +1,6 @@
 package routing
 
-import "gitlab.com/iskaypetcom/digital/sre/tools/dev/backend-api-sdk/v2/core/container"
+import "github.com/arielsrv/go-sdk-api/core/container"
 
 type APIRoutes struct {
 	routes  []Route

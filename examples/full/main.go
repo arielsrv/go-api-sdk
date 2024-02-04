@@ -1,12 +1,12 @@
 package main
 
 import (
-	"gitlab.com/iskaypetcom/digital/sre/tools/dev/backend-api-sdk/v2/core/mocks"
+	"github.com/arielsrv/go-sdk-api/core/mocks"
 	"log"
 
-	"gitlab.com/iskaypetcom/digital/sre/tools/dev/backend-api-sdk/v2/core"
-	_ "gitlab.com/iskaypetcom/digital/sre/tools/dev/backend-api-sdk/v2/docs"
-	"gitlab.com/iskaypetcom/digital/sre/tools/dev/backend-api-sdk/v2/examples/full/app"
+	"github.com/arielsrv/go-sdk-api/core"
+	_ "github.com/arielsrv/go-sdk-api/docs"
+	"github.com/arielsrv/go-sdk-api/examples/full/app"
 )
 
 // @title Backend IskayPet SDK

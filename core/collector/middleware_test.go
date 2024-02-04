@@ -7,11 +7,11 @@ import (
 	"strings"
 	"testing"
 
+	"github.com/arielsrv/go-sdk-api/core/collector"
 	"github.com/gofiber/fiber/v2"
 	"github.com/gofiber/fiber/v2/middleware/basicauth"
 	"github.com/prometheus/client_golang/prometheus"
 	"github.com/prometheus/client_golang/prometheus/promhttp"
-	"gitlab.com/iskaypetcom/digital/sre/tools/dev/backend-api-sdk/v2/core/collector"
 )
 
 func TestMiddleware(t *testing.T) {

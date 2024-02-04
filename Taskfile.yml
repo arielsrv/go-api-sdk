@@ -15,11 +15,6 @@ env:
   KUSTOMIZE_FOLDER_INPUT: kustomize
 
 tasks:
-  k:build:
-    desc: build k8s build
-    deps: [ create-folder ]
-    cmds:
-      - kustomize build $KUSTOMIZE_FOLDER_INPUT/overlays/local --output $BUILD_FOLDER/build.yaml --load-restrictor LoadRestrictionsNone
   docker:build:
     desc: docker build
     cmds:
@@ -80,16 +75,6 @@ tasks:
     desc: main()
     cmds:
       - go run $SOURCE_FOLDER/$ENTRY_POINT.go
-  uml:
-    desc: Generate UML documentation with PlantUML.
-    cmds:
-      - go get github.com/jfeliu007/goplantuml/parser
-      - go install github.com/jfeliu007/goplantuml/cmd/goplantuml@latest
-      - |
-        goplantuml -title {{.APP_NAME}} \
-          -show-compositions -show-aggregations -aggregate-private-members \
-          -recursive ./ > docs/structures.puml
-      - go mod tidy
   all:
     desc: Run relevant tasks.
     cmds:

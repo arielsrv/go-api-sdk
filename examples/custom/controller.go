@@ -1,6 +1,6 @@
 package main
 
-import "gitlab.com/iskaypetcom/digital/sre/tools/dev/backend-api-sdk/v2/core/routing"
+import "github.com/arielsrv/go-sdk-api/core/routing"
 
 type IMessageController interface {
 	GetMessage(ctx *routing.HTTPContext) error

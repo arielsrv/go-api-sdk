@@ -1,8 +1,8 @@
 package application
 
 import (
-	"gitlab.com/iskaypetcom/digital/sre/tools/dev/backend-api-sdk/v2/core/routing"
-	"gitlab.com/iskaypetcom/digital/sre/tools/dev/backend-api-sdk/v2/core/services"
+	"github.com/arielsrv/go-sdk-api/core/routing"
+	"github.com/arielsrv/go-sdk-api/core/services"
 )
 
 type AppConfig struct {

@@ -1,8 +1,8 @@
 package controllers
 
 import (
-	"gitlab.com/iskaypetcom/digital/sre/tools/dev/backend-api-sdk/v2/core/routing"
-	"gitlab.com/iskaypetcom/digital/sre/tools/dev/backend-api-sdk/v2/examples/full/app/services"
+	"github.com/arielsrv/go-sdk-api/core/routing"
+	"github.com/arielsrv/go-sdk-api/examples/full/app/services"
 )
 
 type IMessageController interface {

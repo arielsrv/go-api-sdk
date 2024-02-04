@@ -6,12 +6,12 @@ import (
 	"net/http"
 	"testing"
 
+	"github.com/arielsrv/go-sdk-api/core/errorx"
 	"github.com/gofiber/fiber/v2"
 	"github.com/samber/oops"
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
 	"github.com/valyala/fasthttp"
-	"gitlab.com/iskaypetcom/digital/sre/tools/dev/backend-api-sdk/v2/core/errorx"
 )
 
 func TestNewError(t *testing.T) {

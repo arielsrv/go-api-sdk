@@ -3,8 +3,8 @@ package main
 import (
 	"net/http"
 
-	"gitlab.com/iskaypetcom/digital/sre/tools/dev/backend-api-sdk/v2/core/container"
-	"gitlab.com/iskaypetcom/digital/sre/tools/dev/backend-api-sdk/v2/core/routing"
+	"github.com/arielsrv/go-sdk-api/core/container"
+	"github.com/arielsrv/go-sdk-api/core/routing"
 )
 
 type Routes struct {
