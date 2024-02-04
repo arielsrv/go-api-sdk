@@ -1,0 +1,235 @@
+@startuml
+title -show-compositions
+namespace core {
+    class APIApplication << (S,Aquamarine) >> {
+        - server Server
+        - appConfig AppConfig
+        - routes []Route
+
+        + UseMetrics()
+        + UseSwagger()
+        + UseRequestID()
+        + UseLogger()
+        + UseCors()
+        + UseRecovery()
+        + RegisterWarmup(applicationWarmup ApplicationWarmup)
+        + RegisterRoutes(router Router)
+        + Build()
+        + UseConfig(config ...*env.Config)
+        + RegisterServer(server Server)
+        + RegisterDependencyInjectionModule(applicationModule ApplicationModule)
+
+    }
+    interface APIApplicationFeatures  {
+        + UseMetrics()
+        + UseSwagger()
+        + UseRequestID()
+        + UseLogger()
+        + UseCors()
+        + UseRecovery()
+        + UseConfig(config ...*env.Config)
+
+    }
+    class APIRoutes << (S,Aquamarine) >> {
+        - routes []Route
+
+        + AddRoute(method string, path string, action <font color=blue>func</font>(*HTTPContext) error)
+        + GetRoutes() []Route
+
+    }
+    class AppConfig << (S,Aquamarine) >> {
+        + Recovery bool
+        + Swagger bool
+        + RequestID bool
+        + Logger bool
+        + Cors bool
+        + Metrics bool
+        + ApplicationWarmup ApplicationWarmup
+
+    }
+    interface Application  {
+        + RegisterWarmup(applicationWarmup ApplicationWarmup)
+        + RegisterRoutes(router Router)
+        + RegisterDependencyInjectionModule(applicationModule ApplicationModule)
+        + Build()
+
+    }
+    interface ApplicationModule  {
+        + Configure()
+
+    }
+    interface ApplicationWarmup  {
+        + Loaded() bool
+
+    }
+    class DependencyInjectionModule << (S,Aquamarine) >> {
+        + Bind(constructor <font color=blue>interface</font>{}, opts ...dig.ProvideOption) DependencyInjectionModule
+
+    }
+    class Error << (S,Aquamarine) >> {
+        + Type string
+        + Title string
+        + Status int
+        + Detail string
+        + Instance string
+        + OopsError error
+
+        + Error() string
+
+    }
+    class FastHTTPServer << (S,Aquamarine) >> {
+        - application IApplication
+        - appConfig AppConfig
+        - hostedServices []IHostedService
+        - routes []Route
+        - host string
+        - port int
+        - applicationInitialized bool
+        - errChan <font color=blue>chan</font> error
+        - listeners []<font color=blue>chan</font> bool
+        - wg sync.WaitGroup
+        - mtx sync.Mutex
+        - rw sync.RWMutex
+
+        - subscribe(listener <font color=blue>chan</font> bool)
+        - notify(isRunning bool) error
+        - runHostedServices(ctx context.Context, hostedServices []IHostedService, listener <font color=blue>chan</font> bool)
+        - runApplicationWarmup(applicationWarmup ApplicationWarmup, listener <font color=blue>chan</font> bool)
+        - wait(listener <font color=blue>chan</font> bool)
+        - isReady() bool
+        - loaded(value bool)
+
+        + Start()
+        + Configure(appConfig AppConfig)
+        + Shutdown() error
+        + Join() error
+        + SetParams(application IApplication)
+        + AddHostedService(hostedService IHostedService)
+        + RegisterRoutes(routes []Route)
+
+    }
+    class FiberPrometheus << (S,Aquamarine) >> {
+        - requestsTotal *prometheus.CounterVec
+        - requestDuration *prometheus.HistogramVec
+        - requestInFlight *prometheus.GaugeVec
+        - defaultURL string
+
+        + RegisterAt(app fiber.Router, url string, handlers ...fiber.Handler)
+        + Middleware(ctx *fiber.Ctx) error
+
+    }
+    class HTTPContext << (S,Aquamarine) >> {
+    }
+    class HostedService << (S,Aquamarine) >> {
+        - hostedService IHostedService
+
+        + Execute(ctx context.Context)
+
+    }
+    interface IApplication  {
+        + Init()
+        + RegisterServer(server Server)
+
+    }
+    interface IHostedService  {
+        + Execute(ctx context.Context)
+
+    }
+    interface InjectionModule  {
+        + Bind(constructor <font color=blue>interface</font>{}, opts ...dig.ProvideOption) DependencyInjectionModule
+
+    }
+    class Route << (S,Aquamarine) >> {
+        + Method string
+        + Path string
+        + Action <font color=blue>func</font>(*HTTPContext) error
+
+    }
+    interface Router  {
+        + Register()
+        + GetRoutes() []Route
+
+    }
+    interface Server  {
+        + Start()
+        + Shutdown() error
+        + Join() error
+        + RegisterRoutes(routes []Route)
+        + Configure(config AppConfig)
+        + SetParams(application IApplication)
+        + AddHostedService(hostedService IHostedService)
+
+    }
+}
+"fiber.App" *-- "core.FastHTTPServer"
+"fiber.Ctx" *-- "routing.HTTPContext"
+
+"core.APIApplicationFeatures" <|-- "core.APIApplication"
+"core.Application" <|-- "core.APIApplication"
+"core.InjectionModule" <|-- "core.DependencyInjectionModule"
+"core.Server" <|-- "core.FastHTTPServer"
+"core.IHostedService" <|-- "core.HostedService"
+
+"core.APIApplication" o-- "core.AppConfig"
+"core.APIApplication" o-- "core.Route"
+"core.APIApplication" o-- "core.Server"
+"core.APIRoutes" o-- "core.Route"
+"core.AppConfig" o-- "core.ApplicationWarmup"
+"core.FastHTTPServer" o-- "core.AppConfig"
+"core.FastHTTPServer" o-- "core.IApplication"
+"core.FastHTTPServer" o-- "core.IHostedService"
+"core.FastHTTPServer" o-- "core.Route"
+"core.FastHTTPServer" o-- "sync.Mutex"
+"core.FastHTTPServer" o-- "sync.RWMutex"
+"core.FastHTTPServer" o-- "sync.WaitGroup"
+"core.FiberPrometheus" o-- "prometheus.CounterVec"
+"core.FiberPrometheus" o-- "prometheus.GaugeVec"
+"core.FiberPrometheus" o-- "prometheus.HistogramVec"
+"core.HostedService" o-- "core.IHostedService"
+
+namespace main {
+    class Application << (S,Aquamarine) >> {
+        + Init()
+
+    }
+    class ApplicationModule << (S,Aquamarine) >> {
+        + Configure()
+
+    }
+    interface IMessageController  {
+        + GetMessage(ctx *routing.HTTPContext) error
+
+    }
+    class MessageController << (S,Aquamarine) >> {
+        + GetMessage(ctx *routing.HTTPContext) error
+
+    }
+    class MyBackgroundWorker << (S,Aquamarine) >> {
+        + Execute(ctx context.Context)
+
+    }
+    class Routes << (S,Aquamarine) >> {
+        + Register()
+
+    }
+}
+"core.APIApplication" *-- "main.Application"
+"core.DependencyInjectionModule" *-- "main.ApplicationModule"
+"core.APIRoutes" *-- "main.Routes"
+
+"core.ApplicationModule" <|-- "main.ApplicationModule"
+"main.IMessageController" <|-- "main.MessageController"
+"core.IHostedService" <|-- "main.MyBackgroundWorker"
+
+
+namespace mocks {
+    class DummySQSConsumerService << (S,Aquamarine) >> {
+        + Execute(ctx context.Context)
+
+    }
+}
+
+"core.IHostedService" <|-- "mocks.DummySQSConsumerService"
+
+
+@enduml

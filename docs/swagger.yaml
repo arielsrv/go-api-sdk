@@ -1,0 +1,49 @@
+basePath: /
+definitions:
+  errorx.Error:
+    properties:
+      detail:
+        example: Your current balance is 30, but that costs 50.
+        type: string
+      instance:
+        example: /account/12345/msgs/abc
+        type: string
+      status:
+        example: 403
+        type: integer
+      title:
+        example: You do not have enough credit.
+        type: string
+      type:
+        example: https://example.com/probs/out-of-credit
+        type: string
+    type: object
+info:
+  contact: {}
+  description: Provide an interface to build core APIs.
+  title: Backend IskayPet SDK
+  version: v1.
+paths:
+  /message:
+    get:
+      description: Get message
+      produces:
+      - application/json
+      - application/problem+json
+      responses:
+        "200":
+          description: OK
+          schema:
+            type: string
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/errorx.Error'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/errorx.Error'
+      summary: Get message
+      tags:
+      - Messages
+swagger: "2.0"

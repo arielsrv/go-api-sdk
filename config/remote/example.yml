@@ -1,0 +1,5 @@
+app.scope: prod
+
+server.host: 0.0.0.0
+server.port: 8081
+log.level: info

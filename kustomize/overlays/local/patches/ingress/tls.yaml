@@ -1,0 +1,6 @@
+- op: add
+  path: /spec/tls
+  value:
+    - hosts:
+        - backend-sdk-api.local.dp.iskaypet.com
+      secretName: backend-sdk-api--secret

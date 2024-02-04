@@ -1,0 +1,72 @@
+{
+    "swagger": "2.0",
+    "info": {
+        "description": "Provide an interface to build core APIs.",
+        "title": "Backend IskayPet SDK",
+        "contact": {},
+        "version": "v1."
+    },
+    "basePath": "/",
+    "paths": {
+        "/message": {
+            "get": {
+                "description": "Get message",
+                "produces": [
+                    "application/json",
+                    "application/problem+json"
+                ],
+                "tags": [
+                    "Messages"
+                ],
+                "summary": "Get message",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    "404": {
+                        "description": "Not Found",
+                        "schema": {
+                            "$ref": "#/definitions/errorx.Error"
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "schema": {
+                            "$ref": "#/definitions/errorx.Error"
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "definitions": {
+        "errorx.Error": {
+            "type": "object",
+            "properties": {
+                "detail": {
+                    "type": "string",
+                    "example": "Your current balance is 30, but that costs 50."
+                },
+                "instance": {
+                    "type": "string",
+                    "example": "/account/12345/msgs/abc"
+                },
+                "status": {
+                    "type": "integer",
+                    "example": 403
+                },
+                "title": {
+                    "type": "string",
+                    "example": "You do not have enough credit."
+                },
+                "type": {
+                    "type": "string",
+                    "example": "https://example.com/probs/out-of-credit"
+                }
+            }
+        }
+    }
+}

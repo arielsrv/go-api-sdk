@@ -1,0 +1,9 @@
+app.scope: local
+
+# server config
+log.level: info
+
+# aws config
+aws.url: http://localhost:4566
+aws.region: us-east-1
+
